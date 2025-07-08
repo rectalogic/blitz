@@ -3,6 +3,7 @@ members = [
   "packages/anyrender",
   "packages/anyrender_vello",
   "packages/anyrender_vello_cpu",
+  "packages/anyrender_bevy_vello",
   "packages/anyrender_svg",
   "packages/blitz-traits",
   "packages/blitz-dom",
@@ -36,6 +37,7 @@ edition = "2024"
 anyrender = { version = "0.4.1", path = "./packages/anyrender" }
 anyrender_vello = { version = "0.4.1", path = "./packages/anyrender_vello" }
 anyrender_vello_cpu = { version = "0.4.1", path = "./packages/anyrender_vello_cpu" }
+anyrender_bevy_vello = { version = "0.1.0", path = "./packages/anyrender_bevy_vello" }
 anyrender_svg = { version = "0.4.1", path = "./packages/anyrender_svg" }
 
 # Blitz dependencies(in-repo)
@@ -83,6 +85,7 @@ wgpu = "24"
 softbuffer = "0.4"
 vello = { version = "0.5", features = [ "wgpu" ] }
 vello_cpu = { version = "0.0.1" }
+bevy_vello = { version = "0.10.2" }
 usvg = "0.45.1"
 
 # Windowing & Input
@@ -156,6 +159,7 @@ publish = false
 anyrender = { workspace = true }
 anyrender_vello = { workspace = true }
 anyrender_vello_cpu = { workspace = true }
+anyrender_bevy_vello = { workspace = true }
 blitz-dom = { workspace = true }
 blitz-html = { workspace = true }
 blitz-traits = { workspace = true }

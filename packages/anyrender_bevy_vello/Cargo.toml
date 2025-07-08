@@ -1,0 +1,16 @@
+[package]
+name = "anyrender_bevy_vello"
+description = "bevy_vello backend for anyrender"
+version = "0.1.0"
+homepage = "https://github.com/dioxuslabs/blitz"
+repository = "https://github.com/dioxuslabs/blitz"
+documentation = "https://docs.rs/anyrender_bevy_vello"
+license.workspace = true
+edition = "2024"
+
+[dependencies]
+anyrender = { workspace = true }
+kurbo = { workspace = true }
+peniko = { workspace = true }
+bevy_vello = { workspace = true }
+vello = { workspace = true }
