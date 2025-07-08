@@ -1,16 +1,13 @@
 use anyrender::{NormalizedCoord, Paint, PaintScene};
-use bevy_vello::{VelloScene, render::VelloRenderer};
+use bevy_vello::VelloScene;
 use kurbo::{Affine, Rect, Shape, Stroke};
 use peniko::{BlendMode, BrushRef, Color, Fill, Font, StyleRef, color::AlphaColor};
 
-pub struct BevyVelloScenePainter<'r> {
-    pub renderer: &'r mut VelloRenderer,
-    pub inner: VelloScene,
-}
+pub struct BevyVelloScenePainter<'v>(pub &'v mut VelloScene);
 
-impl PaintScene for BevyVelloScenePainter<'_> {
+impl<'v> PaintScene for BevyVelloScenePainter<'v> {
     fn reset(&mut self) {
-        self.inner.reset();
+        self.0.reset();
     }
 
     fn push_layer(
@@ -20,11 +17,11 @@ impl PaintScene for BevyVelloScenePainter<'_> {
         transform: Affine,
         clip: &impl Shape,
     ) {
-        self.inner.push_layer(blend, alpha, transform, clip);
+        self.0.push_layer(blend, alpha, transform, clip);
     }
 
     fn pop_layer(&mut self) {
-        self.inner.pop_layer();
+        self.0.pop_layer();
     }
 
     fn stroke<'a>(
@@ -35,7 +32,7 @@ impl PaintScene for BevyVelloScenePainter<'_> {
         brush_transform: Option<Affine>,
         shape: &impl Shape,
     ) {
-        self.inner
+        self.0
             .stroke(style, transform, brush, brush_transform, shape);
     }
 
@@ -57,7 +54,7 @@ impl PaintScene for BevyVelloScenePainter<'_> {
             Paint::Custom(_) => BrushRef::Solid(AlphaColor::TRANSPARENT),
         };
 
-        self.inner
+        self.0
             .fill(style, transform, brush_ref, brush_transform, shape);
     }
 
@@ -74,7 +71,7 @@ impl PaintScene for BevyVelloScenePainter<'_> {
         glyph_transform: Option<Affine>,
         glyphs: impl Iterator<Item = anyrender::Glyph>,
     ) {
-        self.inner
+        self.0
             .draw_glyphs(font)
             .font_size(font_size)
             .hint(hint)
@@ -101,7 +98,7 @@ impl PaintScene for BevyVelloScenePainter<'_> {
         radius: f64,
         std_dev: f64,
     ) {
-        self.inner
+        self.0
             .draw_blurred_rounded_rect(transform, rect, brush, radius, std_dev);
     }
 }
