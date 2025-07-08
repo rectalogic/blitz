@@ -9,7 +9,7 @@ use blitz_paint::paint_scene;
 use blitz_traits::shell::{ColorScheme, Viewport};
 
 fn main() {
-    let document = Document::new("examples/assets/border.html", 400, 300, 1.);
+    let document = Document::new("examples/assets/google_reduced.html", 400, 300, 1.);
     App::new()
         .insert_non_send_resource(document)
         .add_plugins(DefaultPlugins)
@@ -68,7 +68,6 @@ fn setup(mut commands: Commands) {
 }
 
 fn update_document(mut scene: Single<&mut VelloScene>, document: NonSend<Document>) {
-    scene.reset();
     paint_scene(
         &mut BevyVelloScenePainter(scene.deref_mut()),
         document.html.as_ref(),
