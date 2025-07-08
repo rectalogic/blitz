@@ -9,7 +9,7 @@ use blitz_paint::paint_scene;
 use blitz_traits::shell::{ColorScheme, Viewport};
 
 fn main() {
-    let document = Document::new("examples/assets/google.html", 800, 600);
+    let document = Document::new("examples/assets/border.html", 400, 300, 1.);
     App::new()
         .insert_non_send_resource(document)
         .add_plugins(DefaultPlugins)
@@ -27,10 +27,8 @@ struct Document {
 }
 
 impl Document {
-    fn new(path: &str, width: u32, height: u32) -> Self {
+    fn new(path: &str, width: u32, height: u32, scale: f64) -> Self {
         let file_content = std::fs::read_to_string(path).unwrap();
-
-        let scale = 2.0;
 
         // Create HtmlDocument
         let mut document = HtmlDocument::from_html(

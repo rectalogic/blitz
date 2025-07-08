@@ -1725,6 +1725,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "45cf71b2d7cdcd426a22a319bca829da712985f32f247813cf2226b67a6bdf0a"
 dependencies = [
  "bevy",
+ "parley 0.4.0",
  "thiserror 2.0.12",
  "tracing",
  "vello",
@@ -1947,7 +1948,7 @@ dependencies = [
  "keyboard-types",
  "markup5ever",
  "objc2 0.6.1",
- "parley",
+ "parley 0.5.0",
  "peniko",
  "percent-encoding",
  "selectors",
@@ -2023,7 +2024,7 @@ dependencies = [
  "color",
  "euclid",
  "kurbo",
- "parley",
+ "parley 0.5.0",
  "peniko",
  "stylo",
  "taffy 0.8.3",
@@ -3781,6 +3782,29 @@ dependencies = [
  "slotmap",
  "tinyvec",
  "ttf-parser 0.25.1",
+]
+
+[[package]]
+name = "fontique"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "64763d1f274c8383333851435b6cdf071c31cfcdb39fd5860d20943205a007a7"
+dependencies = [
+ "bytemuck",
+ "fontconfig-cache-parser",
+ "hashbrown 0.15.4",
+ "icu_locid",
+ "memmap2",
+ "objc2 0.6.1",
+ "objc2-core-foundation",
+ "objc2-core-text",
+ "objc2-foundation 0.3.1",
+ "peniko",
+ "read-fonts",
+ "roxmltree",
+ "smallvec",
+ "windows 0.58.0",
+ "windows-core 0.58.0",
 ]
 
 [[package]]
@@ -6051,11 +6075,24 @@ dependencies = [
 
 [[package]]
 name = "parley"
+version = "0.4.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e28dadbe655332fd7d996794ec8d0c376695f6ca47bc75aa01e0967c7f28e42a"
+dependencies = [
+ "fontique 0.4.0",
+ "hashbrown 0.15.4",
+ "peniko",
+ "skrifa",
+ "swash",
+]
+
+[[package]]
+name = "parley"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "13e57638545cf2ba4c3e72cc5715e53b1880b829cc3dbefda3d1700c58efe723"
 dependencies = [
- "fontique",
+ "fontique 0.5.0",
  "hashbrown 0.15.4",
  "peniko",
  "skrifa",
@@ -9635,7 +9672,7 @@ dependencies = [
  "log",
  "os_info",
  "owo-colors",
- "parley",
+ "parley 0.5.0",
  "png",
  "pollster",
  "rayon",
